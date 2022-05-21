@@ -7,4 +7,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "ng_features";
+  tab: string = "recipe";
+  constructor() {}
+
+  onChangeTab(tab: string) {
+    console.log(tab);
+    this.tab = tab;
+  }
 }

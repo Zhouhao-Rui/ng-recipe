@@ -4,10 +4,18 @@
       <a class="navbar-brand" href="#">Recipe Book</a>
       <ul class="navbar-nav">
         <div class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Recipe</a>
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="#"
+            (click)="onChangeTab($event, 'recipe')"
+            >Recipe</a
+          >
         </div>
         <div class="nav-item">
-          <a class="nav-link" href="#">Shopping</a>
+          <a class="nav-link" href="#" (click)="onChangeTab($event, 'shopping')"
+            >Shopping</a
+          >
         </div>
       </ul>
     </div>
