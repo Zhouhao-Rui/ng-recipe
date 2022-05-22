@@ -4,38 +4,24 @@
       <a class="navbar-brand" href="#">Recipe Book</a>
       <ul class="navbar-nav">
         <div class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="#"
-            (click)="onChangeTab($event, 'recipe')"
-            >Recipe</a
-          >
+          <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/recipe">Recipe</a>
         </div>
         <div class="nav-item">
-          <a class="nav-link" href="#" (click)="onChangeTab($event, 'shopping')"
-            >Shopping</a
-          >
+          <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/shoppinglist">Shopping</a>
         </div>
       </ul>
     </div>
 
     <div class="header-right">
       <div appDropdown class="dropdown">
-        <a
-          class="btn btn-secondary dropdown-toggle"
-          href="#"
-          role="button"
-          id="dropdownMenuLink"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+          data-bs-toggle="dropdown" aria-expanded="false">
           Manage
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Save Data</a></li>
-          <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+          <li><a class="dropdown-item" style="cursor: pointer;">Save Data</a></li>
+          <li><a class="dropdown-item" style="cursor: pointer;">Fetch Data</a></li>
         </ul>
       </div>
     </div>

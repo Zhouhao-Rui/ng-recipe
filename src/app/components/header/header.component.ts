@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from "@angular/core";
-import { EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-header",
@@ -7,13 +6,7 @@ import { EventEmitter } from "@angular/core";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  @Output() changeTabEmitter = new EventEmitter<string>();
   constructor() {}
 
   ngOnInit(): void {}
-
-  onChangeTab(event: Event, tab: string) {
-    console.log(event);
-    this.changeTabEmitter.emit(tab);
-  }
 }

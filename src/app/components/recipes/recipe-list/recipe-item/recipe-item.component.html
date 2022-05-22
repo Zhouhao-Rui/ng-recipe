@@ -1,14 +1,10 @@
-<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+<a class="list-group-item clearfix" style="cursor: pointer;" [routerLink]="['detail/' + index]"
+  routerLinkActive="active">
   <div class="float-start">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>
   </div>
   <div class="float-end">
-    <img
-      [src]="recipe.imagePath"
-      alt=""
-      class="img-responsive"
-      style="max-height: 50px"
-    />
+    <img [src]="recipe.imagePath" alt="" class="img-responsive" style="max-height: 50px" />
   </div>
 </a>
