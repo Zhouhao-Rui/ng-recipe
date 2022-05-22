@@ -43,4 +43,12 @@ export class ShoppingListService {
     console.log(this.ingredients);
     console.log(this.ingredient_names);
   }
+
+  addIngredientsFromRecipe(ingredients: Ingredient[]) {
+    console.log("aaa");
+    for (let ingredient of ingredients) {
+      this.addIngredient(ingredient);
+    }
+    console.log(this);
+  }
 }

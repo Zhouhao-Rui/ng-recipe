@@ -5,8 +5,7 @@ import { Ingredient } from "src/app/shared_model/ingredient.model";
 @Component({
   selector: "app-shopping-list",
   templateUrl: "./shopping-list.component.html",
-  styleUrls: ["./shopping-list.component.css"],
-  providers: [ShoppingListService]
+  styleUrls: ["./shopping-list.component.css"]
 })
 export class ShoppingListComponent implements OnInit {
   ingredients: Array<Ingredient> = [];
@@ -16,6 +15,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     //binding data
     this.ingredients = this.shoppingListService.getIngredients();
+
     this.ingredients_names = this.shoppingListService.getIngredientNames();
 
     //event emitter
