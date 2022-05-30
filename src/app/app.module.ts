@@ -27,6 +27,7 @@ import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { environment } from "../environments/environment";
+import { LoadingSpinnerComponent } from "./shared_model/loading-spinner/loading-spinner.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from "../environments/environment";
     DropdownDirective,
     RecipeEditComponent,
     RecipeStartComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
