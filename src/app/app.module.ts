@@ -29,6 +29,7 @@ import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { environment } from "../environments/environment";
 import { LoadingSpinnerComponent } from "./shared_model/loading-spinner/loading-spinner.component";
 import { AlertComponent } from "./components/alert/alert.component";
+import { AlertDirective } from "./directives/alert.directive";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AlertComponent } from "./components/alert/alert.component";
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective,
+    AlertDirective,
     RecipeEditComponent,
     RecipeStartComponent,
     AuthComponent,

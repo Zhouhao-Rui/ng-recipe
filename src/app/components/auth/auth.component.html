@@ -5,11 +5,12 @@
         {{ error }}
       </p>
     </div> -->
-    <app-alert
+    <!-- <app-alert
       *ngIf="error"
       [message]="error"
       (close)="onHandleError()"
-    ></app-alert>
+    ></app-alert> -->
+    <ng-template appalertdire> </ng-template>
     <div *ngIf="isLoading" style="text-align: center">
       <app-loading-spinner></app-loading-spinner>
     </div>

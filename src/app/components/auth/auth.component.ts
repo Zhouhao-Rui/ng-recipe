@@ -1,7 +1,18 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  ComponentFactoryResolver,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { AlertDirective } from "src/app/directives/alert.directive";
 import { AuthService } from "src/app/services/auth.service";
+import { AlertComponent } from "../alert/alert.component";
 import { User } from "./user.model";
 
 @Component({
@@ -9,14 +20,19 @@ import { User } from "./user.model";
   templateUrl: "./auth.component.html",
   styleUrls: ["./auth.component.css"]
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   error: string = null;
+  @ViewChild(AlertDirective) alertDirective: AlertDirective;
+
+  private closeSub: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.alertDirective);
+  }
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -56,6 +72,7 @@ export class AuthComponent implements OnInit {
         console.log(err);
         this.error = err;
         this.isLoading = false;
+        this.alertComponent(this.error);
       }
     );
 
@@ -64,5 +81,24 @@ export class AuthComponent implements OnInit {
 
   onHandleError() {
     this.error = null;
+  }
+
+  private alertComponent(err) {
+    this.alertDirective.viewContainerRef.clear();
+
+    const cmpRef =
+      this.alertDirective.viewContainerRef.createComponent(AlertComponent);
+
+    cmpRef.instance.message = err;
+    this.closeSub = cmpRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      this.alertDirective.viewContainerRef.clear();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.closeSub) {
+      this.closeSub.unsubscribe();
+    }
   }
 }
