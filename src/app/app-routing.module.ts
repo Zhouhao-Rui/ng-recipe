@@ -10,12 +10,9 @@ const routes: Routes = [
     redirectTo: "/recipe"
   },
   {
-    path: "shoppinglist",
-    component: ShoppingListComponent
-  },
-  {
-    path: "auth",
-    component: AuthComponent
+    path: "recipe",
+    loadChildren: () =>
+      import("./components/recipes/recipe.module").then((m) => m.RecipeModule)
   }
 ];
 

@@ -5,8 +5,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { ShoppingListComponent } from "./components/shopping-list/shopping-list.component";
-import { ShoppingEditComponent } from "./components/shopping-list/shopping-edit/shopping-edit.component";
 // to allow use in all files in the application
 import { ShoppingListService } from "./services/shopping-list.service";
 import { DropdownDirective } from "./directives/dropdown.directive";
@@ -25,19 +23,12 @@ import { LoadingSpinnerComponent } from "./shared_model/loading-spinner/loading-
 import { AlertComponent } from "./components/alert/alert.component";
 import { AlertDirective } from "./directives/alert.directive";
 import { RecipeModule } from "./components/recipes/recipe.module";
+import { ShoppingListModule } from "./components/shopping-list/shopping-list.module";
+import { SharedModule } from "./shared_model/shared.module";
+import { AuthModule } from "./components/auth/auth.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
-    AlertDirective,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, AlertDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +40,10 @@ import { RecipeModule } from "./components/recipes/recipe.module";
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    RecipeModule
+    RecipeModule,
+    ShoppingListModule,
+    SharedModule,
+    AuthModule
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
