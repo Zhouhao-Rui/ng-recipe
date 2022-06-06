@@ -28,6 +28,7 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { environment } from "../environments/environment";
 import { LoadingSpinnerComponent } from "./shared_model/loading-spinner/loading-spinner.component";
+import { AlertComponent } from "./components/alert/alert.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LoadingSpinnerComponent } from "./shared_model/loading-spinner/loading-
     RecipeEditComponent,
     RecipeStartComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
