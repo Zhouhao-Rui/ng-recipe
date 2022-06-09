@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
 import { ShoppingListService } from "src/app/services/shopping-list.service";
 import { Ingredient } from "src/app/shared_model/ingredient.model";
+import { map, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-shopping-list",
@@ -10,9 +12,22 @@ import { Ingredient } from "src/app/shared_model/ingredient.model";
 export class ShoppingListComponent implements OnInit {
   ingredients: Array<Ingredient> = [];
   ingredients_names: string[] = [];
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
+  ) {}
 
   ngOnInit(): void {
+    // this.store
+    //   .select("shoppingList")
+    //   .pipe(
+    //     map((sub) => {
+    //       return sub.ingredients;
+    //     })
+    //   )
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //   });
     //binding data
     this.ingredients = this.shoppingListService.getIngredients();
 

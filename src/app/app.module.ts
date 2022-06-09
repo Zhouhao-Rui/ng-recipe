@@ -21,6 +21,11 @@ import { AlertDirective } from "./directives/alert.directive";
 import { ShoppingListModule } from "./components/shopping-list/shopping-list.module";
 import { SharedModule } from "./shared_model/shared.module";
 import { AuthModule } from "./components/auth/auth.module";
+// NgRX
+import { StoreModule } from "@ngrx/store";
+import { shoppingListReducer } from "./components/shopping-list/store/shopping-list.reducer";
+// NgRX devtools
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AlertDirective],
@@ -37,7 +42,15 @@ import { AuthModule } from "./components/auth/auth.module";
     AngularFireDatabaseModule,
     ShoppingListModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    StoreModule.forRoot({
+      shoppingList: shoppingListReducer
+    }),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    })
   ],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
