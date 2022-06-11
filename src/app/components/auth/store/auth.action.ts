@@ -1,6 +1,7 @@
 import { Action } from "@ngrx/store";
 
-export const LOGIN = "LOGIN";
+export const LOGIN_START = "[AUTH] LOGIN_START";
+export const LOGIN = "[AUTH] LOGIN";
 
 export class LoginAction implements Action {
   readonly type: string = LOGIN;
@@ -11,6 +12,16 @@ export class LoginAction implements Action {
       userId: string;
       token: string;
       expirationDate: Date;
+    }
+  ) {}
+}
+
+export class LoginStartAction implements Action {
+  readonly type: string = LOGIN_START;
+  constructor(
+    public payload: {
+      email: string;
+      password: string;
     }
   ) {}
 }

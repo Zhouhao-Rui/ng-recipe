@@ -27,6 +27,8 @@ import { shoppingListReducer } from "./components/shopping-list/store/shopping-l
 // NgRX devtools
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { appReducer } from "./store/app.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./components/auth/store/auth.effect";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AlertDirective],
@@ -45,6 +47,7 @@ import { appReducer } from "./store/app.reducer";
     SharedModule,
     AuthModule,
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([AuthEffects]),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
