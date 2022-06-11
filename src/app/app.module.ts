@@ -33,7 +33,7 @@ import { AuthEffects } from "./components/auth/store/auth.effect";
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AlertDirective],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
