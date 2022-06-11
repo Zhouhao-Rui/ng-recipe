@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { ShoppingListService } from "src/app/services/shopping-list.service";
 import { Ingredient } from "src/app/shared_model/ingredient.model";
 import { map, tap } from "rxjs/operators";
+import * as fromApp from "../../store/app.reducer";
 
 @Component({
   selector: "app-shopping-list",
@@ -14,7 +15,7 @@ export class ShoppingListComponent implements OnInit {
   ingredients_names: string[] = [];
   constructor(
     private shoppingListService: ShoppingListService,
-    private store: Store<{ shoppingList: { ingredients: Ingredient[] } }>
+    private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class ShoppingListComponent implements OnInit {
     //   .subscribe((res) => {
     //     console.log(res);
     //   });
+    // this.ingredients = this.store.select('shoppingList')
     //binding data
     this.ingredients = this.shoppingListService.getIngredients();
 

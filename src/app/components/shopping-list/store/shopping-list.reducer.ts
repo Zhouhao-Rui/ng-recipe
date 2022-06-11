@@ -7,6 +7,10 @@ import {
   ShoppingListActions
 } from "./shopping-list.action";
 
+export interface State {
+  ingredients: Ingredient[];
+}
+
 const initialState = {
   ingredients: [new Ingredient("Apple", 5), new Ingredient("Pear", 10)]
 };

@@ -26,6 +26,7 @@ import { StoreModule } from "@ngrx/store";
 import { shoppingListReducer } from "./components/shopping-list/store/shopping-list.reducer";
 // NgRX devtools
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { appReducer } from "./store/app.reducer";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AlertDirective],
@@ -43,9 +44,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     ShoppingListModule,
     SharedModule,
     AuthModule,
-    StoreModule.forRoot({
-      shoppingList: shoppingListReducer
-    }),
+    StoreModule.forRoot(appReducer),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

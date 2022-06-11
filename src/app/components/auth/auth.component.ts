@@ -9,10 +9,13 @@ import {
 } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
 import { AlertDirective } from "src/app/directives/alert.directive";
 import { AuthService } from "src/app/services/auth.service";
+import { AppState } from "src/app/store/app.reducer";
 import { AlertComponent } from "../alert/alert.component";
+import { LoginAction } from "./store/auth.action";
 import { User } from "./user.model";
 
 @Component({
@@ -28,7 +31,11 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   private closeSub: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     console.log(this.alertDirective);
@@ -62,6 +69,15 @@ export class AuthComponent implements OnInit, OnDestroy {
           res.user.uid,
           res.user.refreshToken,
           expirationDate
+        );
+        // use store
+        this.store.dispatch(
+          new LoginAction({
+            email: res.user.email,
+            userId: res.user.uid,
+            token: res.user.refreshToken,
+            expirationDate: expirationDate
+          })
         );
         this.authService.userSubject.next(user);
         this.router.navigate(["/recipe"]);
